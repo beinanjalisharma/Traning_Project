@@ -1,0 +1,63 @@
+<div class="profile-container">
+    <!-- Header Section -->
+    <div class="header-section">
+      <img src="profile-pic.jpg" alt="Profile Picture" class="profile-picture">
+      <h1 class="user-name">Hello, User!</h1>
+      <p class="membership-tier">Membership: New Shopper</p>
+    </div>
+  
+    <!-- User Details Section -->
+    <div class="user-details">
+      <div class="detail-item">
+        <span>Email:</span> <span id="email">user.com</span>
+        <button (click)="editEmail()">Edit</button>
+      </div>
+      <div class="detail-item">
+        <span>Phone:</span> <span id="phone">+91 1234567890</span>
+      </div>
+      <div class="detail-item">
+        <span>Delivery Address:</span> <span id="address">Default Address</span>
+        <button (click)="editAddress()">Edit</button>
+      </div>
+      <div class="detail-item">
+        <span>Loyalty Points:</span> <span id="loyalty-points">500 Points</span>
+      </div>
+    </div>
+  
+    <!-- Recent Orders Section -->
+    <div class="recent-orders">
+      <h2>Recent Orders</h2>
+      <ul>
+        <li>Order #1 - Delivered</li>
+        <li>Order #2 - Pending</li>
+      </ul>
+    </div>
+  
+    <!-- Actions Section -->
+    <div class="actions-section">
+      <button (click)="viewSavedItems()">Saved Items</button>
+      <button (click)="viewOrderHistory()">Order History</button>
+      <button (click)="editProfile()">Edit Profile</button>
+      <button (click)="managePayments()">Payment Methods</button>
+      <button (click)="trackOrders()">Track Orders</button>
+    </div>
+  
+    <!-- Promotions Section -->
+    <div class="promotions-section">
+      <h2>Exclusive Deals</h2>
+      <p>Special offers just for you!</p>
+      <h2>Recommended Products</h2>
+      <p>Check out suggestions based on your preferences!</p>
+      <h2>Coupon Codes</h2>
+      <p>Your personalized discounts appear here!</p>
+    </div>
+  
+    <!-- Help & Support Section -->
+    <div class="support-section">
+      <h2>Help & Support</h2>
+      <p><a href="#">FAQ</a></p>
+      <p><a href="#">Return/Refund Status</a></p>
+      <p><a href="#">Contact Us</a></p>
+    </div>
+  </div>
+  

@@ -1,0 +1,14 @@
+.shop-container {
+    padding: 20px;
+  }
+  
+  .components-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  app-clothing, app-makeup {
+    flex: 1;
+    margin: 10px;
+  }
+  

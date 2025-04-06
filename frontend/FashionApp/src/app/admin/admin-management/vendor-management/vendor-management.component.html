@@ -1,0 +1,23 @@
+<div class="vendor-table-container">
+    <h1>Vendor Details</h1>
+  
+    <table class="vendor-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vendor of vendors">
+          <td>{{ vendor.id }}</td>
+          <td>{{ vendor.name }}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="vendors.length === 0" class="no-data">No vendors available.</p>
+  </div>
+  

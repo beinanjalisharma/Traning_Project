@@ -1,0 +1,27 @@
+<div class="dashboard">
+  <h1>Vendor Dashboard</h1>
+
+  
+  <ul class="product-list">
+    <li *ngFor="let product of products">
+      {{ product.name }} - {{ product.price | currency: 'INR' }}
+      <button (click)="addProduct(product)">Add Product</button>
+      <button (click)="editProduct(product)">Edit</button>
+      <button (click)="deleteProduct(+product.id)">Delete</button>
+    </li>
+  </ul>
+
+  <div *ngIf="result" class="product-form">
+    <h2>{{ result.id === 0 ? 'Add Product' : 'Edit Product' }}</h2>
+    <form (ngSubmit)="saveProduct(result)">
+      <label for="name">Name:</label>
+      <input id="name" [(ngModel)]="result.name" name="name" required />
+
+      <label for="price">Price:</label>
+      <input id="price" type="number" [(ngModel)]="result.price" name="price" required />
+
+      <button type="submit">Save</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>
+</div>

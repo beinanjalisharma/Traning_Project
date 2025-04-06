@@ -1,0 +1,13 @@
+<div class="carousel">
+    <button class="prev-btn" (click)="prev()">&#10094;</button>
+    <div class="carousel-content">
+      <img [src]="images[currentIndex].src" alt="Fashion Image" class="carousel-image">
+      <section class="hero">
+        <h2>Discover the Latest Trends</h2>
+        <p>Shop the newest styles and trends in fashion.</p>
+        <button routerLink="/shop">Shop Now</button>
+      </section>
+    </div>
+    <button class="next-btn" (click)="next()">&#10095;</button>
+  </div>
+  

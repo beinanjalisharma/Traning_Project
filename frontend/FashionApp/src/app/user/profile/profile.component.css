@@ -1,0 +1,110 @@
+/* Container Styling */
+.profile-container {
+    max-width: 400px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Header Section */
+  .header-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #007BFF;
+  }
+  
+  .user-name {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+  
+  .membership-tier {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* User Details Section */
+  .user-details {
+    margin-bottom: 20px;
+  }
+  
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+  
+  button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Recent Orders Section */
+  .recent-orders {
+    margin-bottom: 20px;
+  }
+  
+  .recent-orders ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .recent-orders li {
+    background-color: #f9f9f9;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+  }
+  
+  /* Actions Section */
+  .actions-section button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Promotions Section */
+  .promotions-section {
+    margin-bottom: 20px;
+  }
+  
+  .promotions-section h2 {
+    font-size: 1.2rem;
+  }
+  
+  .promotions-section p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Support Section */
+  .support-section a {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 0.9rem;
+  }
+  
+  .support-section a:hover {
+    text-decoration: underline;
+  }
+  

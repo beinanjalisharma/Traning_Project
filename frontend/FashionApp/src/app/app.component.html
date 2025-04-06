@@ -1,0 +1,39 @@
+<div class="page-wrapper">
+  <header>
+    <h1>Fashion App</h1>
+    <nav>
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/shop">Shop</a></li>
+        <li><a routerLink="/about">About</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
+        <li><a routerLink="/cart">Cart</a></li>
+      </ul>
+      <!-- Login & Signup Buttons -->
+      <div *ngIf="!userIsLoggedIn" class="auth-buttons">
+        <button routerLink="/user" class="login-btn">Login</button>
+      </div>
+      <div *ngIf="userIsLoggedIn" class="auth-buttons">
+        <button (click)="logout()" class="login-btn">LogOut</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Side Navbar -->
+  <!-- <aside class="side-navbar">
+    <h2>Menu</h2>
+    <ul>
+      <li><a href="/">Dashboard</a></li>
+      <li><a href="/shop">Shop</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/settings">Settings</a></li>
+      <li><a href="/help">Help</a></li>
+    </ul>
+  </aside> -->
+  
+<router-outlet></router-outlet>
+
+  <footer>
+    <p>© 2025 Fashion App. All rights reserved.</p>
+  </footer>
+</div>

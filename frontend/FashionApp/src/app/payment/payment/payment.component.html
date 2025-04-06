@@ -1,0 +1,22 @@
+<div class="payment-container">
+    <h2>Payment Page</h2>
+    <h3>Select Payment Option</h3>
+    <div class="payment-options">
+      <button (click)="selectPaymentOption('UPI')" [class.selected]="selectedPaymentOption === 'UPI'">Pay with UPI</button>
+      <button (click)="selectPaymentOption('Card')" [class.selected]="selectedPaymentOption === 'Card'">Pay with Card</button>
+      <button (click)="selectPaymentOption('Wallet')" [class.selected]="selectedPaymentOption === 'Wallet'">Pay with Wallet</button>
+      <button (click)="selectPaymentOption('COD')" [class.selected]="selectedPaymentOption === 'COD'">Cash on Delivery</button>
+    </div>
+  
+    <!-- UPI Options -->
+    <div *ngIf="selectedPaymentOption === 'UPI'" class="upi-options">
+      <h3>Select UPI App</h3>
+      <button (click)="selectUPIOption('GPay')" [class.selected]="selectedUPIOption === 'GPay'">GPay</button>
+      <button (click)="selectUPIOption('PhonePe')" [class.selected]="selectedUPIOption === 'PhonePe'">PhonePe</button>
+      <button (click)="selectUPIOption('Paytm')" [class.selected]="selectedUPIOption === 'Paytm'">Paytm</button>
+    </div>
+  
+ 
+    
+  </div>
+  
