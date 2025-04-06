@@ -7,10 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { CartModule } from './cart/cart.module';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './shared/shared.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ApiRouteInterceptor } from './global/interceptor';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     UserModule
     // SharedModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiRouteInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

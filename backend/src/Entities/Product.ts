@@ -1,5 +1,6 @@
 import { User } from "./User";
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Vendor } from "./Vendor";
 
 
 @Entity('Product_ecom')
@@ -28,6 +29,6 @@ export class Product {
   @Column({type:'varchar'})
   category:string;
 
-  @ManyToOne(() => User, (user) => user.products)
-  vendor: User;
+  @ManyToOne(() => Vendor, (vendor) => vendor.products)
+  vendor: Vendor;
 }

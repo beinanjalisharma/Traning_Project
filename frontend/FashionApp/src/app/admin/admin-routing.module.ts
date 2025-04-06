@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { ManagevendorComponent } from './managevendor/managevendor.component';
 import { ManageproductsComponent } from './manageproducts/manageproducts.component';
-import { ManageusersComponent } from './manageusers/manageusers.component';
+
 import { VendorManagementComponent } from './admin-management/vendor-management/vendor-management.component';
 import { ProductManagementComponent } from './admin-management/product-management/product-management.component';
 import { CustomerManagementComponent } from './admin-management/customer-management/customer-management.component';

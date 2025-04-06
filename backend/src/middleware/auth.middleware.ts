@@ -27,6 +27,8 @@ export const authMiddleware =async  function (req:Request,res:Response, next:Nex
     }
     const token = req.header("authorization")!.split(" ")[1];
     // console.log("token",token);
+    console.log(token);
+    
     
     const decoded= jwt.verify(
         token!,
@@ -35,7 +37,7 @@ export const authMiddleware =async  function (req:Request,res:Response, next:Nex
     // const freshUser=await authService.getUserByEmail(decoded.email);
 
     (req as AuthRequest).user = decoded;
-    console.log("decoded",decoded.role);
+    // console.log("decoded",decoded.role);
     
     // console.log("main key",secret_key);
     // console.log("token",token);

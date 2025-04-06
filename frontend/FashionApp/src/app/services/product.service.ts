@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../model/product.interface';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(){
-    return this.http.get('http://localhost:5000/product/getall')
+    return this.http.get('http://localhost:5000/product/getallproducts')
   }
   addProduct(product: IProduct) {
     return this.http.post('http://localhost:5000/products', product);
@@ -30,6 +31,11 @@ cart:any[]=[]
     this.cart.push(Cart)
 
   }
+   viewallProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`http://localhost:5000/product/getallproducts`
+    );
+  }
+
 
  
 

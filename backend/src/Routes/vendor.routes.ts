@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post("/addvendor", authMiddleware, roleMiddleware("admin"), VendorController.createVendor); // Create a new vendor
 router.get("/getvendor/:id", authMiddleware, roleMiddleware("admin"), VendorController.createVendor); // Get a vendor by ID
-router.get("/viewallvendors", authMiddleware, roleMiddleware("admin"), VendorController.getAllVendors); // Get all vendors
+router.get("/viewallvendors", authMiddleware, VendorController.getAllVendors); // Get all vendors
 router.put("/updatevendor/:id", authMiddleware, roleMiddleware("admin"), VendorController.updateVendor); // Update a vendor
 router.delete("/deletevendor/:id", authMiddleware, roleMiddleware("admin"), VendorController.deleteVendor);
 router.post("/loginvendor", VendorController.loginVendor);

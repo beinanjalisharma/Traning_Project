@@ -8,6 +8,8 @@
         <li><a routerLink="/about">About</a></li>
         <li><a routerLink="/contact">Contact</a></li>
         <li><a routerLink="/cart">Cart</a></li>
+        <li><a routerLink="/admin/dashboard">Admin</a></li>
+
       </ul>
       <!-- Login & Signup Buttons -->
       <div *ngIf="!userIsLoggedIn" class="auth-buttons">
@@ -30,8 +32,8 @@
       <li><a href="/help">Help</a></li>
     </ul>
   </aside> -->
-  
-<router-outlet></router-outlet>
+
+  <router-outlet></router-outlet>
 
   <footer>
     <p>© 2025 Fashion App. All rights reserved.</p>

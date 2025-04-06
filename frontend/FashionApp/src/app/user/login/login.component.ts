@@ -49,10 +49,12 @@ export class LoginComponent {
               timer: 3000, // Auto-close after 3 seconds
               showConfirmButton: false
             });
-            this.router.navigate(['/payment']); 
+            
           }
           console.log('Form Submitted', this.loginForm.value);
-          window.location.reload();
+      
+          // window.location.reload();
+          this.router.navigate(['/shop']); 
         },
         (error:any) => {
          

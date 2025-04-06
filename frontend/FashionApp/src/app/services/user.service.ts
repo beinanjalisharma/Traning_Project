@@ -10,7 +10,7 @@ export class UserService {
 
 
   getAllUsers() {
-    return this.http.get(`${this.api}/user/getallusers`)
+    return this.http.get(`${this.api}/customor/users`)
   }
 
  

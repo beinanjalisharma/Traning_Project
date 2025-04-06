@@ -1,23 +1,87 @@
-<div class="vendor-table-container">
-    <h1>Vendor Details</h1>
+<div class="vendor-container">
+  <h2>Vendor List</h2>
   
-    <table class="vendor-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let vendor of vendors">
-          <td>{{ vendor.id }}</td>
-          <td>{{ vendor.name }}</td>
-         
-        </tr>
-      </tbody>
-    </table>
-  
-    <p *ngIf="vendors.length === 0" class="no-data">No vendors available.</p>
+  <div class="action-bar">
+    <button (click)="openAddVendorModal()" class="add-vendor-btn">Add Vendor</button>
   </div>
   
+  <div *ngIf="loading" class="loading">
+    <p>Loading vendors...</p>
+  </div>
+  
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+  
+  <div *ngIf="!loading && !error">
+    <div *ngIf="vendors.length === 0" class="no-data">
+      <p>No vendors available.</p>
+    </div>
+    
+    <div *ngIf="vendors.length > 0" class="vendor-list">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vendor of vendors">
+            <td>{{ vendor.name || 'N/A' }}</td>
+            <td>{{ vendor.email || 'N/A' }}</td>
+            <td>{{ vendor.phone || 'N/A' }}</td>
+            <td>
+              <button (click)="editVendor(vendor)">Edit</button>
+              <button (click)="deleteVendor(vendor.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Add Vendor Modal -->
+  <div class="modal" *ngIf="showAddVendorModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>{{ isEditMode ? 'Edit Vendor' : 'Add Vendor' }}</h3>
+        <button class="close-btn" (click)="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="vendorForm" (ngSubmit)="saveVendor()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" formControlName="name">
+            <div *ngIf="vendorForm.get('name')?.invalid && vendorForm.get('name')?.touched" class="error">
+              Name is required
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email">
+            <div *ngIf="vendorForm.get('email')?.invalid && vendorForm.get('email')?.touched" class="error">
+              Valid email is required
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input id="phone" type="text" formControlName="phone">
+            <div *ngIf="vendorForm.get('phone')?.invalid && vendorForm.get('phone')?.touched" class="error">
+              Valid phone number is required
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" (click)="closeModal()">Cancel</button>
+            <button type="submit" [disabled]="vendorForm.invalid">{{ isEditMode ? 'Update' : 'Add' }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

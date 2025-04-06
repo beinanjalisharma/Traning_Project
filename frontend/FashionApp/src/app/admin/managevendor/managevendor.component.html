@@ -1,7 +1,7 @@
-<div class="vendor-management">
+<!-- <div class="vendor-management">
     <h1>Vendor Management</h1>
   
-    <!-- Add Vendor Section -->
+  
     <button class="toggle-btn" (click)="showAddForm = !showAddForm">
       {{ showAddForm ? 'Close Add Vendor Form' : 'Add Vendor' }}
     </button>
@@ -33,7 +33,7 @@
       <button type="submit" [disabled]="addVendorForm.invalid" class="submit-btn">Add Vendor</button>
     </form>
   
-    <!-- Vendor List Section -->
+    
     <h2>Vendor List</h2>
     <ul *ngIf="vendors.length > 0" class="vendor-list">
       <li *ngFor="let vendor of vendors">
@@ -46,7 +46,7 @@
     </ul>
     <p *ngIf="vendors.length === 0">No vendors available.</p>
   
-    <!-- Update Vendor Section -->
+   
     <form *ngIf="showUpdateForm" [formGroup]="updateVendorForm" (ngSubmit)="updateVendor()">
       <h3>Update Vendor</h3>
       <div class="form-group">
@@ -67,4 +67,4 @@
       <button type="submit" [disabled]="updateVendorForm.invalid" class="submit-btn">Update Vendor</button>
     </form>
   </div>
-  
+   -->
