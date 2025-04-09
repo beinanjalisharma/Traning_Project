@@ -8,5 +8,6 @@ router.get("/orders/:id", orderController.getOrderById); // Get an order by ID
 router.get("/orders", orderController.getAllOrders); // Get all orders
 router.put("/orders/:id", orderController.updateOrder); // Update an order
 router.delete("/orders/:id", orderController.deleteOrder); // Delete an order
+router.put('/updatestatus/:id/:status',orderController.updateStatusOrder)
 
-export { router };
+export { router as orderRouter};

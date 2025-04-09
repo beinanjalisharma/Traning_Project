@@ -61,6 +61,18 @@ class OrderController {
       res.status(500).json({ message: `Error deleting order: ${error.message}` });
     }
   }
+
+  async updateStatusOrder(req:Request,res:Response){
+    try {
+      const orderId = parseInt(req.params.id);
+      const status = req.params.status
+      const result = await orderService.updateStatusOrder(orderId,status);
+      res.status(200).json({ message: "Order deleted successfully",data:result });
+    } catch (error: any) {
+      res.status(500).json({ message: `Error deleting order: ${error.message}` });
+    }
+
+  }
 }
 
 export default new OrderController();

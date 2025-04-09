@@ -1,53 +1,36 @@
 import { Injectable } from '@angular/core';
-import { ProductService } from './product.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PaymentService {
-  private selectedPaymentMethod: string = ''; // Stores the selected payment method
-  private paymentMethods = [
-    { id: 1, name: 'Credit/Debit Card', logo: 'assets/card-logo.png' },
-    { id: 2, name: 'Net Banking', logo: 'assets/netbanking-logo.png' },
-    { id: 3, name: 'UPI', logo: 'assets/upi-logo.png' },
-    { id: 4, name: 'Wallets', logo: 'assets/wallet-logo.png' },
-    { id: 5, name: 'Cash on Delivery', logo: 'assets/cod-logo.png' }
-  ];
+  private apiUrl = 'http://localhost:5000/payments'; // Replace with your backend URL
 
-  constructor(private productService: ProductService) {}
+  constructor(private http: HttpClient) {}
 
-  // Get available payment methods
-  getPaymentMethods() {
-    return this.paymentMethods;
+  /**
+   * @description
+   * Confirm a payment for an order.
+   * @param orderId The ID of the order to confirm payment for.
+   * @param paymentMethod The payment method (e.g., "COD").
+   * @returns Observable indicating success or failure.
+   */
+  confirmPayment(orderId: number, paymentMethod: 'COD'): Observable<any> {
+    const paymentDetails = {
+      orderId,
+      paymentMethod,
+    };
+    return this.http.post<any>(`${this.apiUrl}/confirm`, paymentDetails);
   }
 
-  // Set the selected payment method
-  setSelectedPaymentMethod(method: string): void {
-    this.selectedPaymentMethod = method;
-    console.log(`Selected Payment Method: ${method}`);
-  }
-
-  // Get the selected payment method
-  getSelectedPaymentMethod(): string {
-    return this.selectedPaymentMethod;
-  }
-
-  // Process payment and clear cart on success
-  processPayment(): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const cart = this.productService.cart;
-      if (this.selectedPaymentMethod && cart.length > 0) {
-        setTimeout(() => {
-          // Simulating success/failure logic
-          Math.random() > 0.2 // 80% success rate
-            ? resolve('Payment successful! Your items will be shipped soon.')
-            : reject('Payment failed! Please try again.');
-        }, 2000); // Simulate API delay
-      } else if (!this.selectedPaymentMethod) {
-        reject('No payment method selected.');
-      } else {
-        reject('Your cart is empty.');
-      }
-    });
+  /**
+   * Fetch payment status for an order.
+   * @param orderId The ID of the order.
+   * @returns Observable containing the payment status.
+   */
+  getPaymentStatus(orderId: number): Observable<{ status: string }> {
+    return this.http.get<{ status: string }>(`${this.apiUrl}/status/${orderId}`);
   }
 }

@@ -1,22 +1,102 @@
 <div class="payment-container">
-    <h2>Payment Page</h2>
-    <h3>Select Payment Option</h3>
-    <div class="payment-options">
-      <button (click)="selectPaymentOption('UPI')" [class.selected]="selectedPaymentOption === 'UPI'">Pay with UPI</button>
-      <button (click)="selectPaymentOption('Card')" [class.selected]="selectedPaymentOption === 'Card'">Pay with Card</button>
-      <button (click)="selectPaymentOption('Wallet')" [class.selected]="selectedPaymentOption === 'Wallet'">Pay with Wallet</button>
-      <button (click)="selectPaymentOption('COD')" [class.selected]="selectedPaymentOption === 'COD'">Cash on Delivery</button>
-    </div>
+  <h2 class="payment-title">Payment Details</h2>
   
-    <!-- UPI Options -->
-    <div *ngIf="selectedPaymentOption === 'UPI'" class="upi-options">
-      <h3>Select UPI App</h3>
-      <button (click)="selectUPIOption('GPay')" [class.selected]="selectedUPIOption === 'GPay'">GPay</button>
-      <button (click)="selectUPIOption('PhonePe')" [class.selected]="selectedUPIOption === 'PhonePe'">PhonePe</button>
-      <button (click)="selectUPIOption('Paytm')" [class.selected]="selectedUPIOption === 'Paytm'">Paytm</button>
+  <!-- Order Summary -->
+  <div class="order-summary">
+    <h3>Order Summary</h3>
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <span>₹{{ subtotal.toFixed(2) }}</span>
     </div>
-  
- 
     
+    <div *ngIf="couponApplied" class="summary-row discount">
+      <span>Discount ({{ DISCOUNT_PERCENT }}%)</span>
+      <span>- ₹{{ discount.toFixed(2) }}</span>
+    </div>
+    
+    <div class="summary-row total">
+      <span>Total</span>
+      <span>₹{{ total.toFixed(2) }}</span>
+    </div>
   </div>
   
+  <!-- Coupon Section -->
+  <div class="coupon-section">
+    <h3>Have a Coupon?</h3>
+    <div class="coupon-input-container">
+      <input 
+        type="text" 
+        [(ngModel)]="couponCode" 
+        [disabled]="couponApplied || isLoading" 
+        placeholder="Enter coupon code"
+        class="coupon-input"
+      />
+      <button 
+        *ngIf="!couponApplied" 
+        (click)="handleCouponSubmit()" 
+        [disabled]="isLoading"
+        class="apply-button"
+      >
+        Apply
+      </button>
+      <button 
+        *ngIf="couponApplied" 
+        (click)="removeCoupon()" 
+        [disabled]="isLoading"
+        class="remove-button"
+      >
+        Remove
+      </button>
+    </div>
+    <p *ngIf="couponError" class="error-message">{{ couponError }}</p>
+    <p *ngIf="couponApplied" class="success-message">
+      Coupon "{{ VALID_COUPON }}" applied successfully!
+    </p>
+  </div>
+  
+  <!-- Payment Method - Cash on Delivery -->
+  <div class="payment-methods">
+    <h3>Payment Method</h3>
+    <div class="cod-container">
+      <div class="cod-option selected">
+        <div class="payment-icon">
+          <i class="fa fa-money-bill"></i>
+        </div>
+        <div class="cod-details">
+          <span class="payment-title">Cash on Delivery</span>
+          <p class="payment-description">Pay with cash when your order is delivered</p>
+        </div>
+      </div>
+    </div>
+    <div class="cod-info">
+      <p><i class="fa fa-info-circle"></i> Please keep exact change ready at the time of delivery</p>
+    </div>
+  </div>
+  
+  <!-- Order Status Messages -->
+  <div *ngIf="orderSuccess" class="order-success">
+    <i class="fa fa-check-circle"></i>
+    <p>Your order has been placed successfully!</p>
+  </div>
+  
+  <div *ngIf="orderError" class="order-error">
+    <i class="fa fa-exclamation-circle"></i>
+    <p>{{ orderError }}</p>
+  </div>
+  
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button class="back-button" [disabled]="isLoading">Go Back</button>
+    <button 
+      class="proceed-button" 
+      [disabled]="isLoading" 
+      (click)="placeOrder()"
+    >
+      <span *ngIf="!isLoading">Place Order</span>
+      <span *ngIf="isLoading">
+        <i class="fa fa-spinner fa-spin"></i> Processing...
+      </span>
+    </button>
+  </div>
+</div>
+

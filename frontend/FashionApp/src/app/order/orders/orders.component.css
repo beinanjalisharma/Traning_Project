@@ -1,0 +1,14 @@
+.order-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    color: #4CAF50;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  

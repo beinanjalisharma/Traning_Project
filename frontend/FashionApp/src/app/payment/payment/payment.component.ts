@@ -1,37 +1,126 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { OrderData, OrderService } from '../../services/order.service';
+import { PaymentService } from '../../services/payment.service';
+import { DisplayCartComponent } from '../../cart/cart/display-cart.component';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css'],
-  standalone: false
+  standalone: false,
 })
-export class PaymentComponent {
-  selectedPaymentOption: string | null = null; // No default selection
-selectedUPIOption: string | null = null;    // No UPI option selected
+export class PaymentComponent implements OnInit {
+  subtotal: number = 0;
+  discount: number = 0;
+  total: number = this.subtotal;
+  paymentMethod: string = 'cod'; // Default to Cash on Delivery
+  couponCode: string = '';
+  couponApplied: boolean = false;
+  couponError: string = '';
+  isLoading: boolean = false;
+  orderSuccess: boolean = false;
+  orderError: string = '';
 
-  processPayment() {
-    if (this.selectedPaymentOption === 'UPI' && this.selectedUPIOption) {
-      alert(`Payment processing through ${this.selectedUPIOption}... Thank you for your order!`);
-    } else if (this.selectedPaymentOption === 'COD') {
-      alert('Your order has been placed successfully! Thank you for choosing Cash on Delivery.');
-    } else if (!this.selectedPaymentOption) {
-      alert('Please select a payment option.');
-    } else if (this.selectedPaymentOption === 'UPI' && !this.selectedUPIOption) {
-      alert('Please select a UPI method.');
+  readonly VALID_COUPON: string = 'Anjali15';
+  readonly DISCOUNT_PERCENT: number = 15;
+
+
+  constructor(private orderService: OrderService, private productService: ProductService) {
+    const orderData = this.productService.cart
+
+    orderData.map(item=>{
+      this.subtotal =  this.subtotal+item.price
+    })
+
+  }
+
+  ngOnInit(): void {
+    this.calculateTotal();
+  }
+
+  calculateTotal(): void {
+    this.total = this.subtotal - this.discount;
+  }
+
+  handleCouponSubmit(): void {
+    if (this.couponCode.trim() === this.VALID_COUPON) {
+      if (!this.couponApplied) {
+        const discountAmount = (this.subtotal * this.DISCOUNT_PERCENT) / 100;
+        this.discount = discountAmount;
+        this.couponApplied = true;
+        this.couponError = '';
+        this.calculateTotal();
+      }
+    } else {
+      this.couponError = 'Invalid coupon code';
     }
   }
 
-  selectPaymentOption(option: string) {
-    this.selectedPaymentOption = option;
-    if (option !== 'UPI') {
-      this.selectedUPIOption = ''; // Reset UPI selection if it's not UPI
-    }
+  removeCoupon(): void {
+    this.couponCode = '';
+    this.couponApplied = false;
+    this.discount = 0;
+    this.couponError = '';
+    this.calculateTotal();
   }
+  placeOrder(): void {
 
-  selectUPIOption(option: string) {
-    this.selectedUPIOption = option;
+    // category
+    // :
+    // "clothing"
+    // desription
+    // :
+    // "Durable and fashionable jeans"
+    // id
+    // :
+    // 74
+    // image_url
+    // :
+    // "/jeans.jpg"
+    // name
+    // :
+    // "Jeans"
+    // price
+    // :
+    // 999
+    // stock
+    // :
+    // 100
+
+
+
+    console.log(this.productService.cart);
+
+
+    this.isLoading = true;
+    this.orderError = '';
+
+    // Prepare the order data
+    const orderData: OrderData = {
+      subtotal: this.subtotal,
+      discount: this.discount,
+      total: this.total,
+      paymentMethod: this.paymentMethod,
+      couponApplied: this.couponApplied,
+      couponCode: this.couponApplied ? this.couponCode : undefined
+    };
+
+    // Call the order service
+    this.orderService.placeOrder(orderData)
+      .subscribe({
+        next: (response) => {
+          this.isLoading = false;
+          this.orderSuccess = true;
+          console.log('Order placed successfully', response);
+          // You can handle redirects here, e.g., to an order confirmation page
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.orderError = 'Failed to place your order. Please try again.';
+          console.error('Order placement failed', error);
+        }
+      });
   }
- 
-
 }
+

@@ -1,9 +1,8 @@
 export interface IProduct {
-[x: string]: any;
-  id: number | string;
+  id: number | string ;
   name: string;
   price: number | string;
-  image_url: string;
+  image_url: string|any;
   category: string;
   description: string;
 };

@@ -22,7 +22,7 @@ export class AuthRepository{
         const result = await this.appDataSource.findOne({where:{email:email}});
         log("result",result);
         if(result?.email){
-            return{email:result,password:result.password,role:result.role}
+            return{email:result,password:result.password,role:result.role,id:result.id}
         }
     }
     async getUserByEmail(email:string){

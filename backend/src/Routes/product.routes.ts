@@ -11,3 +11,4 @@ router.put("/update/:id",authMiddleware,roleMiddleware("vendor") ,productControl
 router.delete("/delete/:id", authMiddleware,roleMiddleware("vendor"),productController.deleteProduct); // Delete a product
 
 export { router as productRouter};
+

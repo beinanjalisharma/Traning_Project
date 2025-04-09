@@ -15,14 +15,12 @@ export class Order {
   total_price: number;
 
 
-  @Column({nullable:true})
-  status: "pending" | "shipped," | "delivered";
+  @Column({nullable:true,default:"pending"})
+  status:string ;
 
 
   @OneToMany(() => OrderItem, (orderItem) => orderItem.order)
   items: OrderItem[]
-
-
 
 }
 

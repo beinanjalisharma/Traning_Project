@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { Product } from "./Product";
-// import { Product } from "./Product";S
+
 
 
 @Entity('Vendor_ecom')

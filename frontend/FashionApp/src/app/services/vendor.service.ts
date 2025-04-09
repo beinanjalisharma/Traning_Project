@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { IProduct } from '../model/product.interface';
 // import { Vendor } from './vendor.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VendorService {
-  private apiUrl = 'http://localhost:5000/vendors'; // Replace with your actual API URL
+  private apiUrl = 'http://localhost:5000/vendors'; 
   
   // BehaviorSubject to maintain current state of vendors
   private _vendors = new BehaviorSubject<any[]>([]);
@@ -85,7 +86,39 @@ export class VendorService {
       )
       .subscribe();
   }
+
+  /**
+   * Add a new product for a vendor.
+   * @param product The product details to add.
+   * @param vendorId The ID of the vendor associated with the product.
+   * @returns Observable with the added product details.
+   */
+  addProduct(product: IProduct, vendorId: number): Observable<IProduct> {
+    return this.http.post<IProduct>(`${this.apiUrl}/${vendorId}/product/add`, product);
+  }
+
+  /**
+   
+   * @param product The product details with updated values.
+   * @param vendorId The ID of the vendor associated with the product.
+   * @returns Observable with the updated product details.
+   */
+  updateProduct(product: IProduct, vendorId: number): Observable<IProduct> {
+    return this.http.put<IProduct>(`${this.apiUrl}/${vendorId}/product/update/:id/${product.id}`, product);
+  }
+
+  /**
+   * Delete a product by its ID for a vendor.
+   * @param productId The ID of the product to delete.
+   * @param vendorId The ID of the vendor associated with the product.
+   * @returns Observable to indicate the deletion status.
+   */
+  deleteProduct(productId: number, vendorId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${vendorId}/product/delete/:id/${productId}`);
+  }
 }
+
+
 
 
 

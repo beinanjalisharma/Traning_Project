@@ -68,6 +68,11 @@ export class OrderRepository {
       throw new Error(`Error deleting order: ${error.message}`);
     }
   }
+
+  updateStatusOrder(orderId:number,status:string){
+    const result = this.repository.update(orderId,{status:status})
+    return result
+  }
 }
 
 export default new OrderRepository();

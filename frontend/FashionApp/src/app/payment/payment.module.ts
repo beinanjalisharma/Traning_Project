@@ -5,17 +5,19 @@ import { PaymentRoutingModule } from './payment-routing.module';
 import { PaymentComponent } from './payment/payment.component';
 import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 import { PaymentFailedComponent } from './payment-failed/payment-failed.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    PaymentComponent,
+   PaymentComponent,
     PaymentSuccessComponent,
     PaymentFailedComponent
   ],
   imports: [
     CommonModule,
-    PaymentRoutingModule
+    PaymentRoutingModule,
+    FormsModule
   ]
 })
 export class PaymentModule { }

@@ -27,21 +27,24 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    this.authService.userLogin(this.loginForm.value).subscribe((res:any)=>{
-      localStorage.setItem('token',res.token)
-    })
+    // this.authService.userLogin(this.loginForm.value).subscribe((res:any)=>{
+    //   console.log("This is from Login component ",res);
+      
+    //   localStorage.setItem('token',res)
+    // })
     if (this.loginForm.valid) {
       let token: any;
       this.authService.userLogin(this.loginForm.value).subscribe(
         (res:any) => {
           token = res.data.token;
-          console.log(token);
+          // console.log(token);
 
 
 
             // SweetAlert success message
           if(token){
-            localStorage.setItem('token',token)
+            localStorage.setItem('token',JSON.stringify(res.data))
+            // console.log("This is from Login component ",res.data.user.email.name);
             Swal.fire({
               icon: 'success',
               title: 'Login Successful!',

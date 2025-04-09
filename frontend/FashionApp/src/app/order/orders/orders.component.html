@@ -1,1 +1,23 @@
-<p>orders works!</p>
+<div class="success-container">
+  <div class="success-icon">
+    <i class="fa fa-check-circle"></i>
+  </div>
+  
+  <h1>Order Placed Successfully!</h1>
+  
+  <div *ngIf="orderId" class="order-details">
+    <p>Your order <strong>#{{ orderId }}</strong> has been placed successfully.</p>
+  </div>
+  <div *ngIf="!orderId" class="order-details">
+    <p>Your order has been placed successfully.</p>
+  </div>
+  
+  <p class="delivery-info">
+    You have chosen Cash on Delivery. Please keep the exact amount ready at the time of delivery.
+  </p>
+  
+  <div class="cta-buttons">
+    <button class="track-order-btn">Track Order</button>
+    <button class="continue-shopping-btn">Continue Shopping</button>
+  </div>
+</div>

@@ -1,51 +1,218 @@
+/* General Container */
 .payment-container {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   max-width: 600px;
   margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f9f9f9;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-h2, h3 {
+.payment-container:hover {
+  transform: scale(1.02);
+}
+
+/* Section Headings */
+.payment-title, h3 {
+  color: #222;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
   text-align: center;
+}
+
+/* Order Summary */
+.order-summary {
+  margin-bottom: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.summary-row span {
+  font-size: 16px;
+  color: #555;
+}
+
+.summary-row.total span {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000;
+}
+
+/* Coupon Section */
+.coupon-input-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.coupon-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.apply-button, .remove-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.apply-button {
+  background: #4caf50;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.remove-button {
+  background: #f44336;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.apply-button:hover {
+  background: #45a049;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.remove-button:hover {
+  background: #e53935;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Error/Success Messages */
+.error-message {
+  color: #f44336;
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.success-message {
+  color: #4caf50;
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Payment Method */
+.cod-container {
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.cod-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cod-option:hover {
+  background: #f9f9f9;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.payment-icon i {
+  font-size: 28px;
+  color: #4caf50;
+}
+
+.payment-title {
+  font-weight: bold;
+  font-size: 16px;
   color: #333;
 }
 
-.payment-options, .upi-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.payment-description {
+  color: #777;
+  font-size: 14px;
+}
+
+/* Order Success/Error */
+.order-success, .order-error {
   margin-top: 20px;
+  padding: 15px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-button {
-  padding: 10px;
-  font-size: 16px;
+.order-success {
+  background: #e8f5e9;
+  color: #4caf50;
+  border: 1px solid #4caf50;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-error {
+  background: #ffebee;
+  color: #f44336;
+  border: 1px solid #f44336;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.back-button, .proceed-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  border: 1px solid #007BFF;
-  border-radius: 5px;
-  background-color: #007BFF;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.back-button {
+  background: #f0f0f0;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.proceed-button {
+  background: #2196f3;
   color: white;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
-  background-color: #0056b3;
+.back-button:hover {
+  background: #e0e0e0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-button.selected {
-  border-color: #28a745;
-  background-color: #28a745;
+.proceed-button:hover {
+  background: #1e88e5;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.upi-options button {
-  border-color: #ffc107;
-  background-color: #ffc107;
-}
-
-.upi-options button.selected {
-  border-color: #ff8800;
-  background-color: #ff8800;
+.proceed-button .fa-spinner {
+  margin-left: 8px;
 }

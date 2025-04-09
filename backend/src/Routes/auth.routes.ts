@@ -7,6 +7,8 @@ const authController = new AuthController()
 
 router.post("/signup", authController.signup); // User signup
 router.post("/login", authController.login);   // User login
+router.post("/vendorlogin",authController.login);
+router.post("/vendorsignup",authController.signup);
 
 
 

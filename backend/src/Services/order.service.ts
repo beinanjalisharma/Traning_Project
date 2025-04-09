@@ -28,6 +28,10 @@ class OrderService {
   async deleteOrder(orderId: number): Promise<void> {
     return this.orderRepo.deleteOrder(orderId);
   }
+
+  async updateStatusOrder(orderId:number,status:string){
+    return await this.orderRepo.updateStatusOrder(orderId,status);
+  }
 }
 
 export default new OrderService();

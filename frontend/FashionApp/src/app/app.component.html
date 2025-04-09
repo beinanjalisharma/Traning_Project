@@ -5,33 +5,38 @@
       <ul>
         <li><a routerLink="/">Home</a></li>
         <li><a routerLink="/shop">Shop</a></li>
-        <li><a routerLink="/about">About</a></li>
-        <li><a routerLink="/contact">Contact</a></li>
+        <li><a routerLink="/aboutUs">About</a></li>
+        <li><a routerLink="/contactUs">Contact</a></li>
         <li><a routerLink="/cart">Cart</a></li>
-        <li><a routerLink="/admin/dashboard">Admin</a></li>
+       
+       
+       
 
       </ul>
       <!-- Login & Signup Buttons -->
-      <div *ngIf="!userIsLoggedIn" class="auth-buttons">
+      <div *ngIf="!isLoggedIn()" class="auth-buttons">
         <button routerLink="/user" class="login-btn">Login</button>
       </div>
-      <div *ngIf="userIsLoggedIn" class="auth-buttons">
+      <div *ngIf="isLoggedIn()" class="auth-buttons">
+       <!-- <h3>{{Profile}}</h3> -->
         <button (click)="logout()" class="login-btn">LogOut</button>
       </div>
+
+
+
+ <div *ngIf="!isvendorLoggedIn()" class="auth-buttons">
+  <button routerLink="/vlogin" class="login-btn">Vendor-Login</button>
+ </div>
+ <div *ngIf="isvendorLoggedIn()" class="auth-buttons">
+  <button (click)="vendorlogout()" class="login-btn">Vendor-Logout</button>
+ </div>
+
+
+      
     </nav>
   </header>
 
-  <!-- Side Navbar -->
-  <!-- <aside class="side-navbar">
-    <h2>Menu</h2>
-    <ul>
-      <li><a href="/">Dashboard</a></li>
-      <li><a href="/shop">Shop</a></li>
-      <li><a href="/profile">Profile</a></li>
-      <li><a href="/settings">Settings</a></li>
-      <li><a href="/help">Help</a></li>
-    </ul>
-  </aside> -->
+ 
 
   <router-outlet></router-outlet>
 

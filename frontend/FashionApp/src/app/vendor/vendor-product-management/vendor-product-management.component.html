@@ -1,0 +1,108 @@
+<div class="product-container">
+  <h2>Product Management</h2>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading">
+    <p>Loading products...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Product List Section -->
+  <div *ngIf="!loading && !error">
+    <div *ngIf="products.length === 0" class="no-data">
+      <p>No products available.</p>
+    </div>
+
+    <div *ngIf="products.length > 0" class="product-list">
+      <button class="add-button" (click)="openModal(false)">Add Product</button> <!-- Add Product Button -->
+
+      <table>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Stock</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td class="product-image">
+              <img *ngIf="product.image_url" [src]="product.image_url" alt="{{ product.name }}">
+              <div *ngIf="!product.image_url" class="no-image">No Image</div>
+            </td>
+            <td>{{ product.name || 'N/A' }}</td>
+            <td>{{ product.price || 'N/A' }}</td>
+            <td>{{ product.category || 'N/A' }}</td>
+            <td>{{ product.stock || 0 }}</td>
+            <td>
+              <button (click)="openModal(true, product)">Update</button> <!-- Update Product Button -->
+              <button (click)="deleteProduct(product.id)">Delete</button> <!-- Delete Product Button -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Product Modal -->
+<div class="modal" *ngIf="showProductModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>{{ isEditMode ? 'Edit Product' : 'Add Product' }}</h3>
+      <button class="close-btn" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input id="name" type="text" formControlName="name" />
+          <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="error">
+            Product name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input id="category" type="text" formControlName="category" />
+          <div *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched" class="error">
+            Category is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="stock">Stock</label>
+          <input id="stock" type="number" formControlName="stock" />
+          <div *ngIf="productForm.get('stock')?.invalid && productForm.get('stock')?.touched" class="error">
+            Stock is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input id="price" type="number" formControlName="price" />
+          <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="error">
+            Price is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="image_url">Image URL</label>
+          <input id="image_url" type="text" formControlName="image_url" />
+        </div>
+
+        <div class="form-actions">
+          <button type="button" (click)="closeModal()">Cancel</button>
+          <button type="submit" [disabled]="productForm.invalid">{{ isEditMode ? 'Update' : 'Add' }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

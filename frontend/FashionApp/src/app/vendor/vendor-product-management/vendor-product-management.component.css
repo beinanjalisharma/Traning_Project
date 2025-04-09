@@ -1,0 +1,270 @@
+/* General Container */
+.product-container {
+  font-family: 'Poppins', sans-serif;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-container:hover {
+  transform: scale(1.01); /* Subtle scale effect */
+}
+
+/* Section Headings */
+.product-container h2 {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Loading and Error Messages */
+.loading p, .no-data p, .error-message p {
+  text-align: center;
+  font-size: 16px;
+}
+
+.loading p, .no-data p {
+  color: #777;
+}
+
+.error-message p {
+  color: #f44336;
+  font-weight: bold;
+}
+
+/* Product List Section */
+.product-list {
+  margin-top: 20px;
+}
+
+.product-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-list th,
+.product-list td {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.product-list th {
+  background-color: #f4f4f4;
+  color: #555;
+  font-weight: bold;
+}
+
+.product-list td {
+  color: #555;
+}
+
+/* Row Hover Effect */
+.product-list tr:hover {
+  background-color: #f0f8ff; /* Light blue background on hover */
+}
+
+/* Product Images */
+.product-list .product-image img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-list .product-image .no-image {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  background: #e0e0e0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Buttons in Product List */
+.product-list button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.product-list button:hover {
+  transform: translateY(-2px); /* Adds a lift effect */
+  opacity: 0.9;
+}
+
+.product-list button:nth-child(1) {
+  background: #3498db;
+  color: white;
+}
+
+.product-list button:nth-child(1):hover {
+  background: #2980b9;
+}
+
+.product-list button:nth-child(2) {
+  background: #f44336;
+  color: white;
+}
+
+.product-list button:nth-child(2):hover {
+  background: #e53935;
+}
+
+/* Add Button */
+.add-button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.add-button:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a hover shadow */
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.modal-content:hover {
+  transform: scale(1.01);
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+}
+
+.modal-header .close-btn {
+  font-size: 20px;
+  color: #555;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-header .close-btn:hover {
+  color: #f44336;
+  transform: scale(1.1);
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #555;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Add blue glow */
+  outline: none;
+}
+
+/* Error */
+.error {
+  font-size: 12px;
+  color: #f44336;
+  margin-top: 5px;
+}
+
+/* Modal Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-actions button[type="button"] {
+  background: #f0f0f0;
+  color: #555;
+}
+
+.form-actions button[type="button"]:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.form-actions button[type="submit"] {
+  background: #4caf50;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}

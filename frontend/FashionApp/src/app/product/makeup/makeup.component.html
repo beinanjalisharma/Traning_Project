@@ -5,7 +5,7 @@
   <div class="product-list" *ngIf="!showAllProducts">
     <ng-container *ngFor="let product of makeUpList | slice: 0:num">
       <div class="product-card">
-        <img [src]="product.image_url" [alt]="product.name">
+        <img src="{{product.image_url}}" [alt]="product.name">
         <h3>{{ product.name }}</h3>
         <p>{{ product.price | currency: 'INR' }}</p>
         <button class="btn btn-primary" (click)="AddToCart(product)">Add to Cart</button>
@@ -20,7 +20,7 @@
   <div class="product-list" *ngIf="showAllProducts">
     <ng-container *ngFor="let product of makeUpList">
       <div class="product-card">
-        <img [src]="product.image_url" [alt]="product.name">
+        <img src="{{product.image_url}}" [alt]="product.name">
         <h3>{{ product.name }}</h3>
         <p>{{ product.price | currency: 'INR' }}</p>
         <button class="btn btn-primary" (click)="AddToCart(product)">Add to Cart</button>

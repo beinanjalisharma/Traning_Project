@@ -27,6 +27,27 @@ export class AuthService {
     return this.http.post(`${this.api}/user/signup`, data)
   }
 
+
+  vendorLogin(data:any){
+
+    return this.http.post(`${this.api}/vendors/loginvendor`, data)
+  }
+
+  vendorsignup(data:any){
+    return this.http.post(`${this.api}/vendors/addvendor`, data)
+
+  }
+
+ isVendorLoggedIn(): boolean {
+    return !!localStorage.getItem("vendortoken");
+  }
+
+  vendorlogout() {
+    const check = localStorage.getItem('vendortoken');
+    if (check) {
+      localStorage.removeItem('vendortoken');
+    }
+  }
 }
 
 

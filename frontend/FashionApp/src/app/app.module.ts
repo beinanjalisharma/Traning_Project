@@ -9,14 +9,16 @@ import { CartModule } from './cart/cart.module';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { ApiRouteInterceptor } from './global/interceptor';
 
+import { ApiRouteInterceptor } from './global/interceptor';
+import { VendorModule } from './vendor/vendor.module';
+import { PaymentModule } from './payment/payment.module';
+import { OrderModule } from './order/order.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+  
   
   ],
   imports: [
@@ -28,7 +30,10 @@ import { ApiRouteInterceptor } from './global/interceptor';
     RouterModule,
     FormsModule,
     HttpClientModule,
-    UserModule
+    UserModule,
+    VendorModule,
+    PaymentModule,
+    OrderModule
     // SharedModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiRouteInterceptor, multi: true },],

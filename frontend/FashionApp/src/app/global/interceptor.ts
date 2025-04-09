@@ -12,10 +12,10 @@ export class ApiRouteInterceptor implements HttpInterceptor {
         let token = '';
 
         try {
-            // Check if 'userData' cookie exists and is not empty
+           
             if (localStorage.getItem('token')) {
                 const cookieData = localStorage.getItem('token')?.trim();
-                // console.log(cookieData);
+             
                 
                 if (cookieData) {
                     // const userData = JSON.parse(cookieData);

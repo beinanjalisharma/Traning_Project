@@ -17,6 +17,8 @@ export class ClothingComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: any) => {
+      console.log("Clothe",data);
+      
       this.myClothingList = data.filter((product: IProduct) => product.category === 'clothing');
     });
   }

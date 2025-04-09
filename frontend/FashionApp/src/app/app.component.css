@@ -1,131 +1,131 @@
-/* Page Wrapper for Footer Placement */
+/* Page Wrapper */
 .page-wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures the page takes full viewport height */
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 25px;
-    background-color: #f8f8f8;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  header h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 30px;
-    color: #333;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  /* Navigation Styling */
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    color: #333;
-    font-weight: 500;
-    padding: 10px 15px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-  }
-  
-  /* Navigation Hover Effect */
-  nav ul li a:hover {
-    background-color: blue;
-    color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 255, 0.2);
-    transform: scale(1.05);
-  }
-  
-  /* Auth Buttons Styling */
-  .auth-buttons {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .auth-buttons .login-btn,
-  .auth-buttons .signup-btn {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 18px;
-    border-radius: 25px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .auth-buttons .login-btn {
-    background: #ffffff;
-    color: blue;
-    border: 2px solid blue;
-  }
-  
-  .auth-buttons .login-btn:hover {
-    background: blue;
-    color: #ffffff;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 255, 0.3);
-  }
-  
-  /* .auth-buttons .signup-btn {
-    background: #ffffff;
-    color: blue;
-    border: 2px solid blue;
-  }
-  
-  .auth-buttons .signup-btn:hover {
-    background: blue;
-    color: #ffffff;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 255, 0.3);
-  } */
-  
-  /* Main Section Styling */
-  main {
-    flex: 1; /* Makes the main section expand to fill available space */
-    padding: 20px;
-    background-color: #fafafa;
-  }
-  
-  /* Footer Styling */
-  footer {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #f8f8f8;
-    color: #666;
-    font-size: 14px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Footer Text Styling */
-  footer p {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    color: #333;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the page takes full viewport height */
+}
+
+/* Header Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background-color: #f8f8f8;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Navigation Styling */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* Navigation Hover Effect */
+nav ul li a:hover {
+  background-color: blue;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Auth Buttons Styling */
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.auth-buttons .login-btn,
+.auth-buttons .signup-btn {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 25px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-buttons .login-btn {
+  background: #ffffff;
+  color: blue;
+  border: 2px solid blue;
+}
+
+.auth-buttons .login-btn:hover {
+  background: blue;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 255, 0.3);
+}
+
+.auth-buttons .signup-btn {
+  background:#ffffff;
+  color: blue;
+  border: 2px solid blue;
+}
+
+.auth-buttons .signup-btn:hover {
+  background:blue;
+  color: blue;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 255, 0.3);
+}
+
+/* Main Content Area */
+main {
+  flex: 1; /* Expands the main section to fill available space */
+  padding: 20px;
+  background-color: #fafafa;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 15px 0;
+  background-color: #f8f8f8;
+  color: #666;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Text */
+footer p {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #333;
+}

@@ -18,7 +18,8 @@ export class MakeupComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: any) => {
-      this.makeUpList = data.filter((product: IProduct) => product.category === 'makeup');
+
+      this.makeUpList = data.filter((product: IProduct) => product.category === 'Makeup');
       console.log(this.makeUpList);
     });
   }

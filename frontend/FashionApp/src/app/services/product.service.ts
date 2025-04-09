@@ -10,37 +10,67 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(){
+  getProducts() {
     return this.http.get('http://localhost:5000/product/getallproducts')
   }
-  addProduct(product: IProduct) {
-    return this.http.post('http://localhost:5000/products', product);
-  }
-  updateProduct(product: IProduct) { 
-    return this.http.put(`http://localhost:5000/products/${product.id}`, product);
-  }
-  deleteProduct(productId: number) {
-    return this.http.delete(`http://localhost:5000/products/${productId}`);
-  }
+  // addProduct(product: IProduct) {
+  //   return this.http.post('http://localhost:5000/products', product);
+  // }
+  // updateProduct(product: IProduct) { 
+  //   return this.http.put(`http://localhost:5000/products/${product.id}`, product);
+  // }
+  // deleteProduct(productId: number) {
+  //   return this.http.delete(`http://localhost:5000/products/${productId}`);
+  // }
   getProductById(productId: number) {
     return this.http.get<IProduct>(`http://localhost:5000/products/${productId}`);
   }
- 
-cart:any[]=[]
-  AddToCart(Cart:any){
+
+  cart: any[] = []
+  AddToCart(Cart: any) {
     this.cart.push(Cart)
 
   }
-   viewallProducts(): Observable<IProduct[]> {
+  viewallProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`http://localhost:5000/product/getallproducts`
     );
+
+
+
+
+
+  }
+  addProduct(product: IProduct): Observable<IProduct> {
+    const token = localStorage.getItem('vendortoken'); // Retrieve token from storage
+    const headers = { Authorization: `Bearer ${token}` }
+    return this.http.post<IProduct>(`http://localhost:5000/product/add`, product,{headers});
   }
 
 
- 
 
-  
+  updateProduct(product: IProduct) {
+    // http://localhost:5000/product/update/51
+    const token = localStorage.getItem('vendortoken'); // Retrieve token from storage
+    const headers = { Authorization: `Bearer ${token}` }
+    return this.http.put(`http://localhost:5000/product/update/${product.id}`, product,{headers});
+  }
+  deleteProduct(productId: any): Observable<IProduct> {
+    const token = localStorage.getItem('vendortoken'); // Retrieve token from storage
+    const headers = { Authorization: `Bearer ${token}` }
+    return this.http.delete<IProduct>(`http://localhost:5000/product/delete/${productId}`, { body: { productId } ,headers:headers});
+  }
+
+
+
+
+
 }
+
+
+
+
+
+
 
 
 
